@@ -21,8 +21,8 @@ def get():
     print("volacid=" + str(volacid) + ", citacid=" + str(citacid) + ", chl=" + str(chl) + ", sul=" + str(sul) + ", alc=" + str(alc))
     # array passed to the model has the same order as cols in the orignal dataset
     # result rounded to nearest integer
-    qual = model.predict(np.array([0.7, 0.5, 0.1, 0.1, 9.5]).reshape(-1, 5))[0]
-    #qual = model.predict(np.array([volacid, citacid, chl, sul, alc], 5).reshape(-1, 1))
+    #qual = model.predict(np.array([0.7, 0.5, 0.1, 0.1, 9.5]).reshape(-1, 5))[0]
+    qual = model.predict(np.array([volacid, citacid, chl, sul, alc]).reshape(-1, 5))[0]
     print("model returned " + str(qual))
     return {'predicted quality': qual}
 
