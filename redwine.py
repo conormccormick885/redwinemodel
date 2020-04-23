@@ -18,9 +18,9 @@ def quality():
     alc = request.args.get('alc', type = float)
     # array passed to the model has the same order as cols in the orignal dataset
     # result rounded to nearest integer
-    #qual = model.predict(np.array[volacid, citacid, chl, sul, alc])
-    qual=2
-    return {'predicted quality': qual[0].round()}
+    qual = model.predict(np.array[volacid, citacid, chl, sul, alc])
+
+    return {'predicted quality': qual}
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True)
