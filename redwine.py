@@ -10,20 +10,20 @@ api = Api(app)
 model = joblib.load('redwinemodel.joblib')
 @app.route('/api/quality', methods=['GET'])
 # http://[ip_addr:5000]/api/quality?volacid=0.7&citacid=0.5&chl=0.1&sul=0.7&alc=9.5
-class Quality(Resource):
-    def get():
-        print("start of get()")
-        volacid = request.args.get('volacid', type = float)
-        citacid = request.args.get('citacid', type = float)
-        chl = request.args.get('chl', type = float)
-        sul = request.args.get('sul', type = float)
-        alc = request.args.get('alc', type = float)
-        print("volacid=" + volacid + ", citacid=" + citacid + ", chl=" + chl + ", sul=" + sul + ", alc=" + alc)
-        # array passed to the model has the same order as cols in the orignal dataset
-        # result rounded to nearest integer
-        qual = model.predict(np.array[volacid, citacid, chl, sul, alc])
-        print("model returned " + qual)
-        return {'predicted quality': qual}
+
+def get():
+    print("start of get()")
+    volacid = request.args.get('volacid', type = float)
+    citacid = request.args.get('citacid', type = float)
+    chl = request.args.get('chl', type = float)
+    sul = request.args.get('sul', type = float)
+    alc = request.args.get('alc', type = float)
+    print("volacid=" + volacid + ", citacid=" + citacid + ", chl=" + chl + ", sul=" + sul + ", alc=" + alc)
+    # array passed to the model has the same order as cols in the orignal dataset
+    # result rounded to nearest integer
+    qual = model.predict(np.array[volacid, citacid, chl, sul, alc])
+    print("model returned " + qual)
+    return {'predicted quality': qual}
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True)
