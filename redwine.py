@@ -4,7 +4,7 @@ from sklearn.linear_model import LogisticRegression
 import joblib
 import numpy as np
 
-app = Flask(_name_)
+app = Flask(__name__)
 api = Api(app)
 
 model = joblib.load('redwinemodel.joblib')
