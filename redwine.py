@@ -1,4 +1,5 @@
-from flask import Flask
+from flask import Flask, request
+import requests
 from flask_restplus import Resource, Api
 from sklearn.linear_model import LogisticRegression
 import joblib
@@ -22,4 +23,4 @@ def quality():
     return {'predicted quality': qual[0].round()}
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0" debug=True)
+    app.run(host="0.0.0.0", debug=True)
