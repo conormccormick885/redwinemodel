@@ -1,5 +1,4 @@
 from flask import Flask, request
-import requests
 from flask_restplus import Resource, Api
 from sklearn.linear_model import LogisticRegression
 import joblib
